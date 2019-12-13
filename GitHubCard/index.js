@@ -1,15 +1,20 @@
 
-const axios = require(axios)
 /* Step 1: using axios, send a GET request to the following URL 
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+
 axios.get('https://api.github.com/users/Cberumen51')
-.then(function (response) {
-  console.log(response);
+.then((res) => {
+  console.log(res);
+  const cardList = res.data.message;
+  cardList.forEach((cards) => {
+    const newCreateCard = createCard(cards);
+    entry.appendChild(newCreateCard)
+  });
 })
-.catch(function(error){
-  console.log(error);
+.catch((err) => {
+  console.log(`you got a error: ${err}`);
 })
 .finally(function(){
   
@@ -20,7 +25,6 @@ axios.get('https://api.github.com/users/Cberumen51')
 
    Skip to Step 3.
 */
-console.log()
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
 */
@@ -58,7 +62,7 @@ const followersArray = [];
 */
 const cards = document.querySelector('cards')
 
-function createCard(){
+function createCard(object){
   const card = document.createElement('div');
   const cardImg = document.createElement('img');
   const cardInfo = document.createElement('div');
@@ -90,8 +94,6 @@ function createCard(){
   cardInfo.classList.add('card-info');
   cardName.classList.add('name')
   cardUsername.classList.add('p')
-  
-
 
 return card;
 
