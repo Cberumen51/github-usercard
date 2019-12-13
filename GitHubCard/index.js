@@ -1,15 +1,26 @@
+
+const axios = require(axios)
 /* Step 1: using axios, send a GET request to the following URL 
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-
+axios.get('https://api.github.com/users/Cberumen51')
+.then(function (response) {
+  console.log(response);
+})
+.catch(function(error){
+  console.log(error);
+})
+.finally(function(){
+  
+})
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
 
    Skip to Step 3.
 */
-
+console.log()
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
 */
@@ -45,6 +56,47 @@ const followersArray = [];
 </div>
 
 */
+const cards = document.querySelector('cards')
+
+function createCard(){
+  const card = document.createElement('div');
+  const cardImg = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const cardName = document.createElement('h3');
+  const cardUsername = document.createElement('p');
+  const cardLocation = document.createElement('p');
+  const cardProfile = document.createElement('p');
+  const cardLink = document.createElement('a');
+  const cardFollwers = document.createElement('p');
+  const cardFollwing = document.createElement('p');
+  const cardBio = document.createElement('p');
+
+
+
+  card.appendChild(cardImg);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(cardName);
+  cardInfo.appendChild(cardUsername);
+  cardInfo.appendChild(cardLocation);
+  cardInfo.appendChild(cardProfile);
+  cardProfile.appendChild(cardLink)
+  cardInfo.appendChild(cardFollwers);
+  cardInfo.appendChild(cardFollwing);
+  cardInfo.appendChild(cardBio);
+
+  // add classes back in
+
+  card.classList.add('card');
+  cardInfo.classList.add('card-info');
+  cardName.classList.add('name')
+  cardUsername.classList.add('p')
+  
+
+
+return card;
+
+}
+
 
 /* List of LS Instructors Github username's: 
   tetondan
