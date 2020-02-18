@@ -8,6 +8,7 @@ axios
 .get('https://api.github.com/users/Cberumen51')
 .then((res) => {
   const user = res.data;
+  console.log(res)
   const newCard = createCard(user);
   cardFromIndex.appendChild(newCard);
 })
@@ -46,14 +47,14 @@ const followersArray = ['CScori',
   //   followersLink = res.data.followers_url;
   // })
   
-  followersArray.forEach((user) => {
-    axios.get(`https://api.github.com/users/${user}`)
-    .then(res => {
-      const data = res.data
-      const newCard = createCard (data);
-      cardFromIndex.appendChild(newCard)
-    })
-  })
+  // followersArray.forEach((user) => {
+  //   axios.get(`https://api.github.com/users/${user}`)
+  //   .then(res => {
+  //     const data = res.data
+  //     const newCard = createCard (data);
+  //     cardFromIndex.appendChild(newCard)
+  //   })
+  // })
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -118,7 +119,6 @@ function createCard(object){
   cardProfile.textContent = `Profile:`;
   cardLink.href = object.html_url;
   cardLink.textContent = object.html_url;
-  // cardLink.style.cursor = `pointer`
   cardFollwers.textContent = `Followers: ${object.followers}`;
   cardFollwing.textContent = `Following: ${object.following}`;
   cardBio.textContent = `Bio: ${object.bio}`
